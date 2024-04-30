@@ -12,7 +12,8 @@ import android.content.pm.ApplicationInfo;
 
 import android.app.NotificationManager;
 import android.content.Context;
-import android.app.NotificationManager.Policy;
+import android.app.NotificationChannel;
+import android.os.Build;
 
 public class GetNotificationPreference extends CordovaPlugin {
   @Override
@@ -25,10 +26,23 @@ public class GetNotificationPreference extends CordovaPlugin {
         // Get the notification policy
         Policy notificationPolicy = notificationManager.getCurrentNotificationPolicy();
 
-        // Check notification settings
-        if (notificationPolicy.areNotificationsEnabled()) {
-            callbackContext.success("true");
+        if (notificationManager != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = notificationManager.getNotificationChannel(NotificationManager.DEFAULT_CHANNEL_ID);
+                if (channel.getImportance() >= NotificationManager.IMPORTANCE_DEFAULT) {
+                    System.out.println("Notifications are enabled");
+                    callbackContext.success("true");
+                } else {
+                    System.out.println("Notifications are disabled");
+                    callbackContext.success("false");
+                }
+            } else {
+                // For versions before Oreo, we can assume notifications are enabled
+                System.out.println("Notifications are enabled");
+                callbackContext.success("true");
+            }
         } else {
+            System.out.println("Failed to get NotificationManager");
             callbackContext.success("false");
         }
         
