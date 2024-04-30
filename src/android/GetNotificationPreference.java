@@ -28,7 +28,7 @@ public class GetNotificationPreference extends CordovaPlugin {
 
         if (notificationManager != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationChannel channel = notificationManager.getNotificationChannel(NotificationManager.DEFAULT_CHANNEL_ID);
+                NotificationChannel channel = notificationManager.getNotificationChannel("default");
                 if (channel.getImportance() >= NotificationManager.IMPORTANCE_DEFAULT) {
                     System.out.println("Notifications are enabled");
                     callbackContext.success("true");
