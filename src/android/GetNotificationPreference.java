@@ -16,15 +16,14 @@ import android.app.NotificationChannel;
 import android.os.Build;
 
 public class GetNotificationPreference extends CordovaPlugin {
-  private final Context context;
   
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     try {
-      this.context = activity;
+      final Activity activity = this.cordova.getActivity();
       
       if (action.equals("getPreference")) {
-        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) activity.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (notificationManager != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
