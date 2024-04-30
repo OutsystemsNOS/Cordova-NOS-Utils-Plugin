@@ -1,18 +1,12 @@
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
-import org.apache.cordova.LOG;
 import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
 import org.json.JSONException;
 
 import android.app.Activity;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.PackageManager;
-import android.content.pm.ApplicationInfo;
-
 import android.app.NotificationManager;
 import android.content.Context;
-import android.app.NotificationChannel;
 import android.os.Build;
 
 public class GetNotificationPreference extends CordovaPlugin {
@@ -23,12 +17,13 @@ public class GetNotificationPreference extends CordovaPlugin {
       final Activity activity = this.cordova.getActivity();
       
       if (action.equals("getPreference")) {
-        NotificationManager notificationManager = (NotificationManager) activity.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (notificationManager != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationChannel channel = notificationManager.getNotificationChannel("default");
-                if (channel.getImportance() >= NotificationManager.IMPORTANCE_DEFAULT) {
+                // For Android Oreo and above, check notification channel importance
+                NotificationChannel channel = notificationManager.getNotificationChannel(NotificationManager.DEFAULT_CHANNEL_ID);
+                if (channel != null && channel.getImportance() >= NotificationManager.IMPORTANCE_DEFAULT) {
                     System.out.println("Notifications are enabled");
                     callbackContext.success("true");
                 } else {
