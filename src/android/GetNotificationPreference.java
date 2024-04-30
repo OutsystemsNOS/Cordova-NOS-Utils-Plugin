@@ -19,10 +19,11 @@ public class GetNotificationPreference extends CordovaPlugin {
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     try {
       if (action.equals("getPreference")) {
-        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Context context = getApplicationContext();
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Get the notification policy
-        Policy notificationPolicy = notificationManager.getNotificationPolicy();
+        Policy notificationPolicy = notificationManager.getCurrentNotificationPolicy();
 
         // Check notification settings
         if (notificationPolicy.areNotificationsEnabled()) {
@@ -30,6 +31,7 @@ public class GetNotificationPreference extends CordovaPlugin {
         } else {
             callbackContext.success("false");
         }
+        
         return true;
       }
       return false;
