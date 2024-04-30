@@ -28,7 +28,7 @@ public class GetNotificationPreference extends CordovaPlugin {
                     callbackContext.success("true");
                 } else {
                     System.out.println("Notifications are disabled");
-                    callbackContext.success("false");
+                    callbackContext.success("false Notifications are disabled");
                 }
             } else {
                 // For versions before Oreo, we can assume notifications are enabled
@@ -37,7 +37,7 @@ public class GetNotificationPreference extends CordovaPlugin {
             }
         } else {
             System.out.println("Failed to get NotificationManager");
-            callbackContext.success("false");
+            callbackContext.success("false Failed to get NotificationManager");
         }
         
         return true;
