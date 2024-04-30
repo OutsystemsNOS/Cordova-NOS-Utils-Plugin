@@ -26,9 +26,6 @@ public class GetNotificationPreference extends CordovaPlugin {
       if (action.equals("getPreference")) {
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        // Get the notification policy
-        Policy notificationPolicy = notificationManager.getCurrentNotificationPolicy();
-
         if (notificationManager != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel channel = notificationManager.getNotificationChannel("default");
