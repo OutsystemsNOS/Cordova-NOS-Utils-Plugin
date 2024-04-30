@@ -16,11 +16,14 @@ import android.app.NotificationChannel;
 import android.os.Build;
 
 public class GetNotificationPreference extends CordovaPlugin {
+  private final Context context;
+  
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     try {
+      this.context = activity;
+      
       if (action.equals("getPreference")) {
-        Context context = getApplicationContext();
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         // Get the notification policy
