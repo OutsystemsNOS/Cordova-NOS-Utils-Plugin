@@ -1,0 +1,38 @@
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.CallbackContext;
+import org.apache.cordova.LOG;
+import org.apache.cordova.PluginResult;
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import android.app.Activity;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.PackageManager;
+import android.content.pm.ApplicationInfo;
+
+
+public class GetNotificationPreference extends CordovaPlugin {
+  @Override
+  public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
+    try {
+      if (action.equals("getPreference")) {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Get the notification policy
+        Policy notificationPolicy = notificationManager.getNotificationPolicy();
+
+        // Check notification settings
+        if (notificationPolicy.areNotificationsEnabled()) {
+            callbackContext.success("true");
+        } else {
+            callbackContext.success("false");
+        }
+        return true;
+      }
+      return false;
+    } catch (Exception e) {
+        callbackContext.error("Failed to get Notifications - " + e.getMessage());
+      return true;
+    }
+  }
+}
