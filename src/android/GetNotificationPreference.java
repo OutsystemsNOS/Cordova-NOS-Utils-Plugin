@@ -13,7 +13,6 @@ import android.content.pm.ApplicationInfo;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.app.NotificationManager.Policy;
-import android.app.NotificationManager.Policy.*;
 
 public class GetNotificationPreference extends CordovaPlugin {
   @Override
