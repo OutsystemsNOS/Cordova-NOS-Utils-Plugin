@@ -5,7 +5,7 @@ import org.json.JSONException;
 
 import android.app.Activity;
 import android.app.NotificationManager;
-import androidx.core.app.NotificationManagerCompat
+import androidx.core.app.NotificationManagerCompat;
 import android.content.Context;
 import android.os.Build;
 
