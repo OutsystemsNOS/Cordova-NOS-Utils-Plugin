@@ -1,5 +1,5 @@
 android {    
-    compileSdkVersion 24      
+    compileSdkVersion 28      
 }    
 dependencies {
      compile 'com.android.support:support-v4:24.0.0'
