@@ -10,10 +10,7 @@
     if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
         enabled = application.currentUserNotificationSettings.types != UIUserNotificationTypeNone;
     } else {
-    #pragma GCC diagnostic push
-    #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         enabled = application.enabledRemoteNotificationTypes != UIRemoteNotificationTypeNone;
-    #pragma GCC diagnostic pop
     }
 
     NSMutableDictionary* message = [NSMutableDictionary dictionaryWithCapacity:1];
