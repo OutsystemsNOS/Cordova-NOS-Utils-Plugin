@@ -41,7 +41,6 @@ public class GetNotificationPreference extends CordovaPlugin {
                     object.put("isEnabled", areNotificationsEnabled);
                     callbackContext.success(object);
                 } catch (Exception e) {
-                    Crashlytics.logException(e);
                     callbackContext.error(e.getMessage());
                 }
             }
