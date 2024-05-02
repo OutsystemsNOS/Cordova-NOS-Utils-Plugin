@@ -3,46 +3,23 @@ import org.apache.cordova.CallbackContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import android.app.Activity;
 import android.app.NotificationManager;
-import androidx.core.app.NotificationManagerCompat;
-//import android.support.v4.app.NotificationManagerCompat;
+import android.content.ComponentName;
 import android.content.Context;
-import android.os.Build;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v4.app.NotificationManagerCompat;
+import android.util.Base64;
+import android.util.Log;
 
 public class GetNotificationPreference extends CordovaPlugin {
   
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     try {
-      //final Activity activity = this.cordova.getActivity();
-      Context context = cordova.getActivity();
-
       if (action.equals("getPreference")) {
-        //NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
-
-        if (notificationManagerCompat != null) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                // For Android Oreo and above, check notification channel importance
-                if (notificationManagerCompat.areNotificationsEnabled()) {
-                    System.out.println("GetNotificationPreference Notifications are enabled");
-                    callbackContext.success("true");
-                } else {
-                    System.out.println("GetNotificationPreference Notifications are disabled");
-                    callbackContext.success("false");
-                }
-            } else {
-                // For versions before Oreo, we can't determine notification status accurately
-                // We can assume notifications are enabled
-                System.out.println("GetNotificationPreference Notifications are enabled");
-                callbackContext.success("true");
-            }
-        } else {
-            System.out.println("GetNotificationPreference Failed to get NotificationManager");
-            callbackContext.success("false");
-        }
-        
+        this.getPreference(callbackContext);        
         return true;
       }
       return false;
@@ -51,4 +28,22 @@ public class GetNotificationPreference extends CordovaPlugin {
       return true;
     }
   }
+  
+  private void getPreference(final CallbackContext callbackContext) {
+        cordova.getThreadPool().execute(new Runnable() {
+            public void run() {
+                try {
+                    Context context = cordova.getActivity();
+                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
+                    boolean areNotificationsEnabled = notificationManagerCompat.areNotificationsEnabled();
+                    JSONObject object = new JSONObject();
+                    object.put("isEnabled", areNotificationsEnabled);
+                    callbackContext.success(object);
+                } catch (Exception e) {
+                    Crashlytics.logException(e);
+                    callbackContext.error(e.getMessage());
+                }
+            }
+        });
+    }
 }
