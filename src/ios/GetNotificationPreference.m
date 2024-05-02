@@ -4,6 +4,7 @@
 @implementation GetNotificationPreference
 
 - (void)getPreference:(CDVInvokedUrlCommand *)command {
+/*
     CDVPluginResult* pluginResult;
 
     // Get the current notification settings
@@ -18,6 +19,7 @@
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Notifications are disabled"];
     }
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    */
 }
 
 @end
