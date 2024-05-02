@@ -14,13 +14,14 @@ public class GetNotificationPreference extends CordovaPlugin {
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     try {
-      final Activity activity = this.cordova.getActivity();
+      //final Activity activity = this.cordova.getActivity();
+      Context context = cordova.getActivity();
 
       if (action.equals("getPreference")) {
         //NotificationManager notificationManager = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
 
-        if (NotificationManagerCompat != null) {
+        if (notificationManagerCompat != null) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 // For Android Oreo and above, check notification channel importance
                 if (notificationManagerCompat.areNotificationsEnabled()) {
