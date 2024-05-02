@@ -39,10 +39,9 @@ public class GetNotificationPreference extends CordovaPlugin {
                     Context context = cordova.getActivity();
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
                     boolean areNotificationsEnabled = notificationManagerCompat.areNotificationsEnabled();
-                    Log.d("GetNotificationPreference", "getPreference 1");
                     JSONObject object = new JSONObject();
                     object.put("isEnabled", areNotificationsEnabled);
-                    Log.d("GetNotificationPreference", "getPreference 2");
+                    Log.d("GetNotificationPreference", "getPreference areNotificationsEnabled " + areNotificationsEnabled);
                     callbackContext.success(object);
                 } catch (Exception e) {
                     Log.d("GetNotificationPreference", "getPreference error");
