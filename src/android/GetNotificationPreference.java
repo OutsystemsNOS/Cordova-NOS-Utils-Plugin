@@ -20,6 +20,7 @@ public class GetNotificationPreference extends CordovaPlugin {
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
     try {
       if (action.equals("getPreference")) {
+        Log.d("GetNotificationPreference", "getPreference");
         this.getPreference(callbackContext);        
         return true;
       }
@@ -34,13 +35,17 @@ public class GetNotificationPreference extends CordovaPlugin {
         cordova.getThreadPool().execute(new Runnable() {
             public void run() {
                 try {
+                    Log.d("GetNotificationPreference", "getPreference run");
                     Context context = cordova.getActivity();
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
                     boolean areNotificationsEnabled = notificationManagerCompat.areNotificationsEnabled();
+                    Log.d("GetNotificationPreference", "getPreference 1");
                     JSONObject object = new JSONObject();
                     object.put("isEnabled", areNotificationsEnabled);
+                    Log.d("GetNotificationPreference", "getPreference 2");
                     callbackContext.success(object);
                 } catch (Exception e) {
+                    Log.d("GetNotificationPreference", "getPreference error");
                     callbackContext.error(e.getMessage());
                 }
             }
