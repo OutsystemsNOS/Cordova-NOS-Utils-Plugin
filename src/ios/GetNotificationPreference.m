@@ -1,7 +1,7 @@
 #import "GetNotificationPreference.h"
-#import "StoreKit/StoreKit.h"
+#import "UIKit/UIKit.h"
 
-@implementation AppReviewPlugin
+@implementation GetNotificationPreference
 
 - (void)getPreference:(CDVInvokedUrlCommand *)command {
     CDVPluginResult* pluginResult;
