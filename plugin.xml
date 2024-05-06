@@ -1,6 +1,6 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
-           id="Cordova-Get-Notification-Preference"
+           id="com.cordova.plugin.GetNotificationPreference"
       version="1.0">
 
     <name>GetNotificationPreference</name>
