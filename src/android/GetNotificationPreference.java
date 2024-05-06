@@ -1,4 +1,4 @@
-import com.cordova.plugin;
+package com.cordova.plugin;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
