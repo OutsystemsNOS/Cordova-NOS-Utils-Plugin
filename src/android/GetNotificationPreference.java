@@ -1,5 +1,5 @@
-import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.CallbackContext;
+import com.cordova.plugin;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
