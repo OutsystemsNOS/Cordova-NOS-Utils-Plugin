@@ -35,8 +35,6 @@ public class GetNotificationPreference extends CordovaPlugin {
   }
   
   private void getPreference(final CallbackContext callbackContext) {
-       // cordova.getThreadPool().execute(new Runnable() {
-       //     public void run() {
                 try {
                     Context context = cordova.getActivity();
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
@@ -45,7 +43,5 @@ public class GetNotificationPreference extends CordovaPlugin {
                 } catch (Exception e) {
                     callbackContext.error(e.getMessage());
                 }
-       //     }
-       // });
     }
 }
