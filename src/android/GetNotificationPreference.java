@@ -4,6 +4,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONException;
 
+import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PluginResult;
+import org.apache.cordova.CallbackContext;
+
 import android.app.NotificationManager;
 import android.content.ComponentName;
 import android.content.Context;
