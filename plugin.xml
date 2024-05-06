@@ -7,7 +7,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <description>Cordova plugin to get user app notification preference</description>
 
     <js-module src="www/GetNotificationPreference.js" name="GetNotificationPreference">
-        <merges target="cordova.plugins.GetNotificationPreference" />
+        <merges target="GetNotificationPreference" />
     </js-module>
 
     <engines>
