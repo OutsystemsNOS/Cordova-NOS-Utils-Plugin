@@ -13,14 +13,12 @@ This plugin can be used to get user notifications preference on the App
 window.GetNotificationPreference.getPreference().then(success).catch(error);
 
 function success(obj) {   
-    $parameters.IsSuccess = true;
-    $parameters.Result = obj; 
+    console.log(obj); 
     $resolve();
 }
 
 function error(error) {    
-    $parameters.IsSuccess = false;
-    $parameters.ErrorMessage = error;
+    console.log(error);
     $resolve();
 }
 ```
