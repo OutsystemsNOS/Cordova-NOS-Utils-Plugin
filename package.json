@@ -4,7 +4,7 @@
   "description": "Cordova plugin to get user app notification preference",
   "types": "./types/index.d.ts",
   "cordova": {
-    "id": "Cordova-Get-Notification-Preference",
+    "id": "com.cordova.plugin.GetNotificationPreference",
     "platforms": [
       "ios",
       "android"
