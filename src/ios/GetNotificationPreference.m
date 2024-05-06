@@ -13,27 +13,10 @@
         enabled = application.enabledRemoteNotificationTypes != UIRemoteNotificationTypeNone;
     }
 
-    NSMutableDictionary* message = [NSMutableDictionary dictionaryWithCapacity:1];
-    [message setObject:[NSNumber numberWithBool:enabled] forKey:@"isEnabled"];
-    CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:message];
-    [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];
-    
-/*
-    CDVPluginResult* pluginResult;
+    NSString *isEnabledString = enabled ? @"true" : @"false"; // Convert BOOL to lowercase string
 
-    // Get the current notification settings
-    UIUserNotificationSettings *notificationSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
-    
-    // Check if the app has permission to display notifications
-    if (notificationSettings.types != UIUserNotificationTypeNone) {
-        NSLog(@"Notifications are enabled");
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
-    } else {
-        NSLog(@"Notifications are disabled");
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Notifications are disabled"];
-    }
-    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    */
+    CDVPluginResult *commandResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:isEnabledString];
+    [self.commandDelegate sendPluginResult:commandResult callbackId:command.callbackId];    
 }
 
 @end
