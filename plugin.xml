@@ -19,7 +19,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="GetNotificationPreference">
-                <param name="ios-package" value="GetNotificationPreference" />
+                <param name="ios-package" value="com.cordova.plugin.GetNotificationPreference" />
             </feature>
         </config-file>
 
@@ -32,7 +32,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="GetNotificationPreference">
-                <param name="android-package" value="GetNotificationPreference" />
+                <param name="android-package" value="com.cordova.plugin.GetNotificationPreference" />
             </feature>
         </config-file>
 
