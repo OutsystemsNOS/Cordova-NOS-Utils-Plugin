@@ -5,7 +5,7 @@ var exec = require("cordova/exec");
 exports.getPreference =
 
 function() {
-    return new Promise(function(resolve, reject) {
-        exec(resolve, reject, PLUGIN_NAME, "getPreference", []);
+    return new Promise(function(success, error) {
+        exec(success, error, PLUGIN_NAME, "getPreference", []);
     });
 };
