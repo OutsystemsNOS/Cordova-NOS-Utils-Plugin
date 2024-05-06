@@ -19,7 +19,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="GetNotificationPreference">
-                <param name="ios-package" value="com.cordova.plugin.GetNotificationPreference" />
+                <param name="ios-package" value="GetNotificationPreference" />
+                <param name="onload" value="true" />
             </feature>
         </config-file>
 
