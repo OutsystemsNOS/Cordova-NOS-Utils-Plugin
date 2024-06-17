@@ -22,7 +22,7 @@ import android.util.Log;
 import org.apache.cordova.PermissionHelper;
 import android.content.pm.PackageManager;
 
-public class GetNotificationPreference extends CordovaPlugin {
+public class NOSUtilsPlugin extends CordovaPlugin {
 
   public static final int TAKE_PIC_SEC = 0;
   
