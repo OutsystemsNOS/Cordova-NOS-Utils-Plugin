@@ -18,6 +18,9 @@ import androidx.core.app.NotificationManagerCompat;
 import android.util.Base64;
 import android.util.Log;
 
+import org.apache.cordova.PermissionHelper;
+import android.content.pm.PackageManager;
+
 public class GetNotificationPreference extends CordovaPlugin {
   
   @Override
@@ -25,6 +28,9 @@ public class GetNotificationPreference extends CordovaPlugin {
     try {
       if (action.equals("getPreference")) {
         this.getPreference(callbackContext);        
+        return true;
+      } else if (action.equals("callCameraPermission")){
+        this.callCameraPermission(callbackContext);        
         return true;
       }
       return false;
@@ -40,6 +46,30 @@ public class GetNotificationPreference extends CordovaPlugin {
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
                     boolean areNotificationsEnabled = notificationManagerCompat.areNotificationsEnabled();
                     callbackContext.success(Boolean.toString(areNotificationsEnabled));
+                } catch (Exception e) {
+                    callbackContext.error(e.getMessage());
+                }
+    }
+
+    private void callCameraPermission(final CallbackContext callbackContext) {
+                try {
+                    boolean takePicturePermission = PermissionHelper.hasPermission(this, Manifest.permission.CAMERA);
+                    if (!takePicturePermission) {
+                    takePicturePermission = true;
+
+                        PackageManager packageManager = this.cordova.getActivity().getPackageManager();
+                        String[] permissionsInPackage = packageManager.getPackageInfo(this.cordova.getActivity().getPackageName(), PackageManager.GET_PERMISSIONS).requestedPermissions;
+                        if (permissionsInPackage != null) {
+                            for (String permission : permissionsInPackage) {
+                                if (permission.equals(Manifest.permission.CAMERA)) {
+                                    takePicturePermission = false;
+                                    break;
+                                }
+                            }
+                        }
+                }
+                  
+                callbackContext.success(Boolean.toString(true));
                 } catch (Exception e) {
                     callbackContext.error(e.getMessage());
                 }
