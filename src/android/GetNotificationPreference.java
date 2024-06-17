@@ -23,6 +23,8 @@ import org.apache.cordova.PermissionHelper;
 import android.content.pm.PackageManager;
 
 public class GetNotificationPreference extends CordovaPlugin {
+
+  public static final int TAKE_PIC_SEC = 0;
   
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
@@ -56,21 +58,9 @@ public class GetNotificationPreference extends CordovaPlugin {
                 try {
                     boolean takePicturePermission = PermissionHelper.hasPermission(this, Manifest.permission.CAMERA);
                     if (!takePicturePermission) {
-                    takePicturePermission = true;
-
-                        PackageManager packageManager = this.cordova.getActivity().getPackageManager();
-                        String[] permissionsInPackage = packageManager.getPackageInfo(this.cordova.getActivity().getPackageName(), PackageManager.GET_PERMISSIONS).requestedPermissions;
-                        if (permissionsInPackage != null) {
-                            for (String permission : permissionsInPackage) {
-                                if (permission.equals(Manifest.permission.CAMERA)) {
-                                    takePicturePermission = false;
-                                    break;
-                                }
-                            }
-                        }
-                }
-                  
-                callbackContext.success(Boolean.toString(true));
+                      PermissionHelper.requestPermission(this, TAKE_PIC_SEC, Manifest.permission.CAMERA);
+                    }                  
+                    callbackContext.success(Boolean.toString(true));
                 } catch (Exception e) {
                     callbackContext.error(e.getMessage());
                 }
