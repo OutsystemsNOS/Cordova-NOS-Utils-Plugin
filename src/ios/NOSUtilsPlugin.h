@@ -1,6 +1,6 @@
 #import <Cordova/CDV.h>
 
-@interface GetNotificationPreference : CDVPlugin
+@interface NOSUtilsPlugin : CDVPlugin
 
 - (void)getPreference:(CDVInvokedUrlCommand*)command;
 
