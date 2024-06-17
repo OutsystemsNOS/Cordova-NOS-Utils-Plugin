@@ -1,13 +1,13 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
-           id="com.cordova.plugin.GetNotificationPreference"
+           id="com.cordova.plugin.NOSUtilsPlugin"
       version="1.0">
 
     <name>GetNotificationPreference</name>
     <description>Cordova plugin to get user app notification preference</description>
 
-    <js-module src="www/GetNotificationPreference.js" name="GetNotificationPreference">
-        <merges target="GetNotificationPreference" />
+    <js-module src="www/NOSUtilsPlugin.js" name="NOSUtilsPlugin">
+        <merges target="NOSUtilsPlugin" />
     </js-module>
 
     <engines>
@@ -18,26 +18,26 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="GetNotificationPreference">
-                <param name="ios-package" value="GetNotificationPreference" />
+            <feature name="NOSUtilsPlugin">
+                <param name="ios-package" value="NOSUtilsPlugin" />
                 <param name="onload" value="true" />
             </feature>
         </config-file>
 
-        <header-file src="src/ios/GetNotificationPreference.h" />
-        <source-file src="src/ios/GetNotificationPreference.m" />
+        <header-file src="src/ios/NOSUtilsPlugin.h" />
+        <source-file src="src/ios/NOSUtilsPlugin.m" />
 
     </platform>
 
     <platform name="android">
 
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="GetNotificationPreference">
-                <param name="android-package" value="com.cordova.plugin.GetNotificationPreference" />
+            <feature name="NOSUtilsPlugin">
+                <param name="android-package" value="com.cordova.plugin.NOSUtilsPlugin" />
             </feature>
         </config-file>
 
-        <source-file src="src/android/GetNotificationPreference.java" target-dir="src/by/GetNotificationPreference/cordova/" />
+        <source-file src="src/android/NOSUtilsPlugin.java" target-dir="src/by/NOSUtilsPlugin/cordova/" />
         <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
                
         <dependency id="cordova-support-android-plugin" version="~1.0.0"/>
