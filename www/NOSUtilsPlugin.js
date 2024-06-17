@@ -1,4 +1,4 @@
-var PLUGIN_NAME = "GetNotificationPreference";
+var PLUGIN_NAME = "NOSUtilsPlugin";
 
 var exec = require("cordova/exec");
 
