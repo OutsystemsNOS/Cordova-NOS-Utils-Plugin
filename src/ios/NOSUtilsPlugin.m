@@ -1,7 +1,7 @@
 #import "NOSUtilsPlugin.h"
 #import "UIKit/UIKit.h"
 
-@implementation GetNotificationPreference
+@implementation NOSUtilsPlugin
 
 - (void)getPreference:(CDVInvokedUrlCommand *)command {
     BOOL enabled = NO;
