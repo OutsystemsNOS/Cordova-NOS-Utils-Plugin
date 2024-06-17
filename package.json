@@ -1,10 +1,10 @@
 {
-  "name": "Cordova-Get-Notification-Preference",
+  "name": "Cordova-NOS.Utils-Plugin",
   "version": "1.0",
   "description": "Cordova plugin to get user app notification preference",
   "types": "./types/index.d.ts",
   "cordova": {
-    "id": "com.cordova.plugin.GetNotificationPreference",
+    "id": "com.cordova.plugin.NOSUtilsPlugin",
     "platforms": [
       "ios",
       "android"
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://https://github.com/MiguelRosaDev/Cordova-Get-Notification-Preference.git"
+    "url": "git+https://github.com/MiguelRosaDev/Cordova-NOS-Utils-Plugin.git"
   },
   "license": "MIT",
   "keywords": [
