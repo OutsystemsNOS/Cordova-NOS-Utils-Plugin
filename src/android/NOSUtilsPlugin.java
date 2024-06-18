@@ -70,14 +70,18 @@ public class NOSUtilsPlugin extends CordovaPlugin {
   @Override
   public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
     try{
+      Log.e("NOSUtils", "onRequestPermissionsResult");
       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
       if (requestCode == TAKE_PIC_SEC) {
+          Log.e("NOSUtils", "onRequestPermissionsResult 1");
           if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
               // Permission granted
+              Log.e("NOSUtils", "onRequestPermissionsResult 2");
               if (callbackContext != null) {
                 callbackContext.success(Boolean.toString(true));
             }
           } else {
+              Log.e("NOSUtils", "onRequestPermissionsResult 3");
               // Permission denied
               if (callbackContext != null) {
                 callbackContext.success(Boolean.toString(false));
@@ -85,6 +89,7 @@ public class NOSUtilsPlugin extends CordovaPlugin {
           }
       }
     } catch (Exception e){
+        Log.e("NOSUtils", "onRequestPermissionsResult 4");
         callbackContext.success(Boolean.toString(false));
     }
   }
