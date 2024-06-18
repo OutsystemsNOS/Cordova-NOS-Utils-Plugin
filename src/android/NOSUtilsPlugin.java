@@ -78,4 +78,5 @@ public class NOSUtilsPlugin extends CordovaPlugin {
               callbackContext.success(Boolean.toString(false));
           }
       }
+  }
 }
