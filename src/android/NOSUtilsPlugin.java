@@ -38,7 +38,7 @@ public class NOSUtilsPlugin extends CordovaPlugin {
       }
       return false;
     } catch (Exception e) {
-        callbackContext.error("GetNotificationPreference Failed to get Notifications - " + e.getMessage());
+        callbackContext.error("NOSUtilsPlugin Failed to get action - " + cation);
       return true;
     }
   }
