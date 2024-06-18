@@ -69,6 +69,7 @@ public class NOSUtilsPlugin extends CordovaPlugin {
 
   @Override
   public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    try{
       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
       if (requestCode == TAKE_PIC_SEC) {
           if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -83,5 +84,8 @@ public class NOSUtilsPlugin extends CordovaPlugin {
             }
           }
       }
+    } catch (Exception e){
+        callbackContext.success(Boolean.toString(false));
+    }
   }
 }
