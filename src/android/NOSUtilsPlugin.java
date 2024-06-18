@@ -38,7 +38,7 @@ public class NOSUtilsPlugin extends CordovaPlugin {
       }
       return false;
     } catch (Exception e) {
-        callbackContext.error("NOSUtilsPlugin Failed to get action - " + cation);
+        callbackContext.error("NOSUtilsPlugin Failed to get action ");
       return true;
     }
   }
