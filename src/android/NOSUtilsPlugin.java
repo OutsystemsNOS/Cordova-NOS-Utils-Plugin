@@ -65,4 +65,17 @@ public class NOSUtilsPlugin extends CordovaPlugin {
                     callbackContext.error(e.getMessage());
                 }
     }
+
+  @Override
+  public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+      super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+      if (requestCode == TAKE_PIC_SEC) {
+          if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+              // Permission granted
+              callbackContext.success(Boolean.toString(true));
+          } else {
+              // Permission denied
+              callbackContext.success(Boolean.toString(false));
+          }
+      }
 }
