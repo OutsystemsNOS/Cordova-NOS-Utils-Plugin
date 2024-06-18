@@ -25,6 +25,7 @@ import android.content.pm.PackageManager;
 public class NOSUtilsPlugin extends CordovaPlugin {
 
   public static final int TAKE_PIC_SEC = 0;
+  private CallbackContext callbackContext;
   
   @Override
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
@@ -72,10 +73,14 @@ public class NOSUtilsPlugin extends CordovaPlugin {
       if (requestCode == TAKE_PIC_SEC) {
           if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
               // Permission granted
-              callbackContext.success(Boolean.toString(true));
+              if (callbackContext != null) {
+                callbackContext.success(Boolean.toString(true));
+            }
           } else {
               // Permission denied
-              callbackContext.success(Boolean.toString(false));
+              if (callbackContext != null) {
+                callbackContext.success(Boolean.toString(false));
+            }
           }
       }
   }
