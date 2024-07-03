@@ -36,6 +36,9 @@ public class NOSUtilsPlugin extends CordovaPlugin {
       } else if (action.equals("callCameraPermission")){
         this.callCameraPermission(callbackContext);        
         return true;
+      } else if (action.equals("hasCameraPermission")){
+        this.hasCameraPermission(callbackContext);        
+        return true;
       }
       return false;
     } catch (Exception e) {
