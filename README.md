@@ -23,5 +23,38 @@ function error(error) {
 }
 ```
 
+#### callCameraPermission
 
-    
+```bash
+window.NOSUtilsPlugin.callCameraPermission().then(success).catch(error);
+
+function success(obj) {   
+    $parameters.IsSuccess = true;
+    $parameters.Result = obj; 
+    $resolve();
+}
+
+function error(error) {    
+    $parameters.IsSuccess = false;
+    $parameters.ErrorMessage = error;
+    $resolve();
+}
+```
+
+#### hasCameraPermission
+
+```bash
+window.NOSUtilsPlugin.hasCameraPermission().then(success).catch(error);
+
+function success(obj) {   
+    $parameters.IsSuccess = true;
+    $parameters.Result = obj; 
+    $resolve();
+}
+
+function error(error) {    
+    $parameters.IsSuccess = false;
+    $parameters.ErrorMessage = error;
+    $resolve();
+}
+```
