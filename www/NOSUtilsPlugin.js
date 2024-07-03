@@ -15,3 +15,10 @@ function() {
         exec(success, error, PLUGIN_NAME, "callCameraPermission", []);
     });
 };
+
+exports.hasCameraPermission =
+function() {
+    return new Promise(function(success, error) {
+        exec(success, error, PLUGIN_NAME, "hasCameraPermission", []);
+    });
+};
