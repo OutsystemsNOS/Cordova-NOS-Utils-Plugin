@@ -3,7 +3,7 @@
 
 ## Cordova-Get-Notification-Preference
 
-This plugin can be used to get user notifications preference on the App
+Cordova plugin to host several native methods, like popup permissions or other technical needs
 
 ### Methods
 
