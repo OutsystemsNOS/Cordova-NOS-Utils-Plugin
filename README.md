@@ -7,7 +7,7 @@ Cordova plugin to host several native methods, like popup permissions or other t
 
 ### Methods
 
-#### getPreference - Get notifications preference off the App
+#### getPreference - Get notifications preference of the App
 
 ```bash
 window.GetNotificationPreference.getPreference().then(success).catch(error);
