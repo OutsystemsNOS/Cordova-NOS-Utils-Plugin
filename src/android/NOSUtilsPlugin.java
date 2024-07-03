@@ -44,12 +44,21 @@ public class NOSUtilsPlugin extends CordovaPlugin {
     }
   }
   
-  private void getPreference(final CallbackContext callbackContext) {
+    private void getPreference(final CallbackContext callbackContext) {
                 try {
                     Context context = cordova.getActivity();
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
                     boolean areNotificationsEnabled = notificationManagerCompat.areNotificationsEnabled();
                     callbackContext.success(Boolean.toString(areNotificationsEnabled));
+                } catch (Exception e) {
+                    callbackContext.error(e.getMessage());
+                }
+    }
+
+    private void hasCameraPermission(final CallbackContext callbackContext) {
+                try {
+                    boolean takePicturePermission = PermissionHelper.hasPermission(this, Manifest.permission.CAMERA);                
+                    callbackContext.success(Boolean.toString(takePicturePermission));
                 } catch (Exception e) {
                     callbackContext.error(e.getMessage());
                 }
@@ -67,8 +76,8 @@ public class NOSUtilsPlugin extends CordovaPlugin {
                 }
     }
 
-  @Override
-  public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
     try{
       Log.e("NOSUtils", "onRequestPermissionsResult");
       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
