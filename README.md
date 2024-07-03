@@ -23,7 +23,7 @@ function error(error) {
 }
 ```
 
-#### callCameraPermission
+#### callCameraPermission (Android ONLY)
 
 ```bash
 window.NOSUtilsPlugin.callCameraPermission().then(success).catch(error);
@@ -41,7 +41,7 @@ function error(error) {
 }
 ```
 
-#### hasCameraPermission
+#### hasCameraPermission (Android ONLY)
 
 ```bash
 window.NOSUtilsPlugin.hasCameraPermission().then(success).catch(error);
