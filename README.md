@@ -7,7 +7,7 @@ Cordova plugin to host several native methods, like popup permissions or other t
 
 ### Methods
 
-#### getPreference
+#### getPreference - Get notifications preference of the App
 
 ```bash
 window.GetNotificationPreference.getPreference().then(success).catch(error);
@@ -23,7 +23,7 @@ function error(error) {
 }
 ```
 
-#### callCameraPermission (Android ONLY)
+#### callCameraPermission - Call camera popup permissions(Android ONLY)
 
 ```bash
 window.NOSUtilsPlugin.callCameraPermission().then(success).catch(error);
@@ -41,7 +41,7 @@ function error(error) {
 }
 ```
 
-#### hasCameraPermission (Android ONLY)
+#### hasCameraPermission - Check if camera permission is enable or disable (Android ONLY)
 
 ```bash
 window.NOSUtilsPlugin.hasCameraPermission().then(success).catch(error);
