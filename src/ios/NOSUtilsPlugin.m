@@ -1,5 +1,6 @@
 #import "NOSUtilsPlugin.h"
 #import "UIKit/UIKit.h"
+#import <AVFoundation/AVFoundation.h>
 
 @implementation NOSUtilsPlugin
 
