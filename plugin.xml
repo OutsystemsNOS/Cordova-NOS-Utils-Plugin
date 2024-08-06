@@ -27,10 +27,10 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <header-file src="src/ios/NOSUtilsPlugin.h" />
         <source-file src="src/ios/NOSUtilsPlugin.m" />
                
-        <preference name="CameraUsageDescription" default="Precisamos de aceder a camera para tirar fotos" />    
+        <preference name="CAMERAUSAGEDESCRIPTION" default="Precisamos de aceder a camera para tirar fotos" />    
                
         <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
-            <string>$CameraUsageDescription</string>
+            <string>$CAMERAUSAGEDESCRIPTION</string>
         </config-file>
 
     </platform>
