@@ -49,7 +49,8 @@
 - (void)hasCameraPermission :(CDVInvokedUrlCommand *)command {
     @try {
         BOOL hasPermission = [self hasCameraPermission];
-        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsBool:hasPermission];
+        NSString* resultString = hasPermission ? @"true" : @"false";
+        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:resultString];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
     @catch (NSException *exception) {
