@@ -16,6 +16,13 @@ function() {
     });
 };
 
+exports.callSmsPermission =
+function() {
+    return new Promise(function(success, error) {
+        exec(success, error, PLUGIN_NAME, "callSmsPermission", []);
+    });
+};
+
 exports.hasCameraPermission =
 function() {
     return new Promise(function(success, error) {
