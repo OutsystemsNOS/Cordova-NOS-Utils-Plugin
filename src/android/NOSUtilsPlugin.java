@@ -19,6 +19,12 @@ import androidx.core.app.NotificationManagerCompat;
 import android.util.Base64;
 import android.util.Log;
 
+import android.Manifest;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import org.apache.cordova.PermissionHelper;
 import android.content.pm.PackageManager;
 
@@ -76,14 +82,9 @@ public class NOSUtilsPlugin extends CordovaPlugin {
           if (!PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS) || 
               !PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS)) {
               
-              PermissionHelper.requestPermissions(
-                  this,
-                  TAKE_SMS_SEC,
-                  new String[] {
-                      Manifest.permission.RECEIVE_SMS,
-                      Manifest.permission.READ_SMS
-                  }
-              );
+               ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.READ_SMS},
+                    PERMISSION_REQUEST_READ_SMS);
           } else {
               callbackContext.success(Boolean.toString(true));
           }
