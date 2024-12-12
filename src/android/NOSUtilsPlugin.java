@@ -69,6 +69,7 @@ public class NOSUtilsPlugin extends CordovaPlugin {
 
     private void callSmsPermission(final CallbackContext callbackContext) {
       try {
+          public static final int TAKE_SMS_SEC = 1; // Valor único para identificação
           // Verifica se a permissão RECEIVE_SMS foi concedida
           boolean receiveSmsPermission = PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS);
   
