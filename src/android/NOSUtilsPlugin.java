@@ -71,20 +71,22 @@ public class NOSUtilsPlugin extends CordovaPlugin {
                 }
     }
 
-    private void callSmsPermission(final CallbackContext callbackContext) {
+   private void callSmsPermission(final CallbackContext callbackContext) {
       try {
-          boolean receiveSmsPermission = PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS);
-  
-          if (!receiveSmsPermission) {
-              PermissionHelper.requestPermission(this, TAKE_SMS_SEC, Manifest.permission.RECEIVE_SMS);
+          if (!PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS) || 
+              !PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS)) {
+              
+              PermissionHelper.requestPermissions(
+                  this,
+                  TAKE_SMS_SEC,
+                  new String[] {
+                      Manifest.permission.RECEIVE_SMS,
+                      Manifest.permission.READ_SMS
+                  }
+              );
+          } else {
+              callbackContext.success(Boolean.toString(true));
           }
-  
-          boolean readSmsPermission = PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS);
-          if (!readSmsPermission) {
-              PermissionHelper.requestPermission(this, TAKE_SMS_SEC, Manifest.permission.READ_SMS);
-          }
-  
-          callbackContext.success(Boolean.toString(true));
       } catch (Exception e) {
           callbackContext.error(e.getMessage());
       }
