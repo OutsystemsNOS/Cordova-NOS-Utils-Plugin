@@ -67,6 +67,30 @@ public class NOSUtilsPlugin extends CordovaPlugin {
                 }
     }
 
+    private void callSmsPermission(final CallbackContext callbackContext) {
+      try {
+          // Verifica se a permissão RECEIVE_SMS foi concedida
+          boolean receiveSmsPermission = PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS);
+  
+          if (!receiveSmsPermission) {
+              // Solicita a permissão RECEIVE_SMS
+              PermissionHelper.requestPermission(this, TAKE_SMS_SEC, Manifest.permission.RECEIVE_SMS);
+          }
+  
+          // Opcional: Verifica e solicita a permissão READ_SMS, se necessário
+          boolean readSmsPermission = PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS);
+          if (!readSmsPermission) {
+              PermissionHelper.requestPermission(this, TAKE_SMS_SEC, Manifest.permission.READ_SMS);
+          }
+  
+          // Retorna sucesso se as permissões forem verificadas ou solicitadas
+          callbackContext.success(Boolean.toString(true));
+      } catch (Exception e) {
+          // Retorna erro em caso de exceção
+          callbackContext.error(e.getMessage());
+      }
+  }
+
     private void callCameraPermission(final CallbackContext callbackContext) {
                 try {
                     boolean takePicturePermission = PermissionHelper.hasPermission(this, Manifest.permission.CAMERA);
