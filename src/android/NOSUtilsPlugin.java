@@ -40,7 +40,7 @@ public class NOSUtilsPlugin extends CordovaPlugin {
       } else if (action.equals("hasCameraPermission")){
         this.hasCameraPermission(callbackContext);        
         return true;
-      } else if (action.equals("hasCameraPermission")){
+      } else if (action.equals("callSmsPermission")){
         this.callSmsPermission(callbackContext);    
         return true;
       }
