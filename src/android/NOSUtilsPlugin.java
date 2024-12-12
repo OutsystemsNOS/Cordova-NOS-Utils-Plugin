@@ -24,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import android.os.Build;
 
 import org.apache.cordova.PermissionHelper;
 import android.content.pm.PackageManager;
@@ -32,6 +33,7 @@ public class NOSUtilsPlugin extends CordovaPlugin {
 
   public static final int TAKE_PIC_SEC = 0;
   public static final int TAKE_SMS_SEC = 1; 
+  private static final int PERMISSION_REQUEST_READ_SMS = 100;
   private CallbackContext callbackContext;
   
   @Override
@@ -82,9 +84,9 @@ public class NOSUtilsPlugin extends CordovaPlugin {
           if (!PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS) || 
               !PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS)) {
               
-               ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.READ_SMS},
-                    PERMISSION_REQUEST_READ_SMS);
+               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                  ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS}, PERMISSION_REQUEST_READ_SMS);
+                }
           } else {
               callbackContext.success(Boolean.toString(true));
           }
