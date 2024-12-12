@@ -7,7 +7,6 @@ import org.json.JSONException;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
 import org.apache.cordova.CallbackContext;
-import android.Manifest;
 
 import android.app.NotificationManager;
 import android.content.ComponentName;
