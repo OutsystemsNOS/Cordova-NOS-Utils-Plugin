@@ -25,6 +25,7 @@ import android.content.pm.PackageManager;
 public class NOSUtilsPlugin extends CordovaPlugin {
 
   public static final int TAKE_PIC_SEC = 0;
+  public static final int TAKE_SMS_SEC = 1; 
   private CallbackContext callbackContext;
   
   @Override
@@ -69,25 +70,19 @@ public class NOSUtilsPlugin extends CordovaPlugin {
 
     private void callSmsPermission(final CallbackContext callbackContext) {
       try {
-          public static final int TAKE_SMS_SEC = 1; // Valor único para identificação
-          // Verifica se a permissão RECEIVE_SMS foi concedida
           boolean receiveSmsPermission = PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS);
   
           if (!receiveSmsPermission) {
-              // Solicita a permissão RECEIVE_SMS
               PermissionHelper.requestPermission(this, TAKE_SMS_SEC, Manifest.permission.RECEIVE_SMS);
           }
   
-          // Opcional: Verifica e solicita a permissão READ_SMS, se necessário
           boolean readSmsPermission = PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS);
           if (!readSmsPermission) {
               PermissionHelper.requestPermission(this, TAKE_SMS_SEC, Manifest.permission.READ_SMS);
           }
   
-          // Retorna sucesso se as permissões forem verificadas ou solicitadas
           callbackContext.success(Boolean.toString(true));
       } catch (Exception e) {
-          // Retorna erro em caso de exceção
           callbackContext.error(e.getMessage());
       }
   }
