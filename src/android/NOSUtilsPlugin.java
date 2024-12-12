@@ -84,7 +84,7 @@ public class NOSUtilsPlugin extends CordovaPlugin {
               !PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS)) {
               
                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                  ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_SMS}, PERMISSION_REQUEST_READ_SMS);
+                  ActivityCompat.requestPermissions(cordova.getActivity(), new String[]{Manifest.permission.READ_SMS}, PERMISSION_REQUEST_READ_SMS);
                 }
           } else {
               callbackContext.success(Boolean.toString(true));
