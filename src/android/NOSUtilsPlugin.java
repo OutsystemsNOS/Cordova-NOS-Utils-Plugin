@@ -80,12 +80,12 @@ public class NOSUtilsPlugin extends CordovaPlugin {
 
    private void callSmsPermission(final CallbackContext callbackContext) {
       try {
-          if (!PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS) || 
-              !PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS)) {
-              
-               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+          if (!PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS) || !PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS)) {           
+              if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) { // Android 15 (API 34)
+                  ActivityCompat.requestPermissions(cordova.getActivity(), new String[]{Manifest.permission.RECEIVE_SENSITIVE_NOTIFICATIONS}, PERMISSION_REQUEST_READ_SMS);
+              } else {
                   ActivityCompat.requestPermissions(cordova.getActivity(), new String[]{Manifest.permission.READ_SMS}, PERMISSION_REQUEST_READ_SMS);
-                }
+              }
           } else {
               callbackContext.success(Boolean.toString(true));
           }
