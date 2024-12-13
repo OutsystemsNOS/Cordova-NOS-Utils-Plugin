@@ -82,13 +82,13 @@ public class NOSUtilsPlugin extends CordovaPlugin {
       try {
           if (!PermissionHelper.hasPermission(this, Manifest.permission.RECEIVE_SMS) || !PermissionHelper.hasPermission(this, Manifest.permission.READ_SMS)) {           
               if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) { // Android 15 (API 34)
-                  String sensitiveNotificationPermission = "android.permission.RECEIVE_SENSITIVE_NOTIFICATIONS";
-                  ActivityCompat.requestPermissions(cordova.getActivity(), new String[]{sensitiveNotificationPermission}, PERMISSION_REQUEST_READ_SMS);
+                  callbackContext.success(Boolean.toString(false));
               } else {
                   ActivityCompat.requestPermissions(cordova.getActivity(), new String[]{Manifest.permission.READ_SMS}, PERMISSION_REQUEST_READ_SMS);
+                  callbackContext.success(Boolean.toString(true));
               }
           } else {
-              callbackContext.success(Boolean.toString(true));
+              callbackContext.success(Boolean.toString(false));
           }
       } catch (Exception e) {
           callbackContext.error(e.getMessage());
