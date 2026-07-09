@@ -37,6 +37,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
     <platform name="android">
 
+        <hook type="after_prepare" src="disable_backup.js" />
+               
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="NOSUtilsPlugin">
                 <param name="android-package" value="com.cordova.plugin.NOSUtilsPlugin" />
