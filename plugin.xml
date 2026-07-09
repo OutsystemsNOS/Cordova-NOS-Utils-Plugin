@@ -37,7 +37,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
     <platform name="android">
         <preference name="ALLOW_ANDROID_BACKUP" default="false" />
-        <hook type="after_prepare" src="disable_backup.js" />
+        <hook type="after_prepare" src="hooks/disable_backup.js" />
                
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="NOSUtilsPlugin">
